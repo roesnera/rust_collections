@@ -37,4 +37,21 @@ fn main() {
         None => &-1
     };
     println!("{}", first_item);
+
+    // mutable vs immutable borrow rules still apply
+    // if you try to use an immutable reference after make a mutable reference such as .push()
+    // mutable references occur even when we don't explicitly pass the reference to a method or fn
+    // if a method refers to Self in a mutable way, that counts as a mutable reference
+
+    // e.g. below I immutably borrow data from vector_tres and save it to a variable
+    let item_from_tres = &vector_tres[1];
+
+    // I am allowed to print it and use it in immutable ways as I need
+    println!("{item_from_tres}");
+
+    // but once I mutate the vector the data is borrowed from, in this case using .push()
+    vector_tres.push(2);
+
+    // I can no longer reference item_from_tres because vector_tres has been mutated
+    println!("{item_from_tres}");
 }
