@@ -54,4 +54,11 @@ fn main() {
 
     // I can no longer reference item_from_tres because vector_tres has been mutated
     println!("{item_from_tres}");
+
+    // to iterate through a loop, you should use the for loop structure
+
+    // note that we borrow here, rather than consume
+    for i in &vector_tres {
+        println!("{i}");
+    };
 }
