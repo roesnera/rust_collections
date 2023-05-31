@@ -53,12 +53,39 @@ fn main() {
     vector_tres.push(2);
 
     // I can no longer reference item_from_tres because vector_tres has been mutated
-    println!("{item_from_tres}");
+    // println!("{item_from_tres}");
 
+    println!("--------------------------------------------------------");
     // to iterate through a loop, you should use the for loop structure
 
     // note that we borrow here, rather than consume
     for i in &vector_tres {
         println!("{i}");
     };
+
+    // we are not allowed to insert or remove items from a vector in a for loop
+    // but we are perfectly well allowed to mutate the original vector's values
+
+    for i in &mut vector_tres {
+        *i += 10;
+        println!("{i}");
+    };
+
+    println!("--------------------------------------------------------");
+    // vectors can only store one type of data, but we can leverage enums to skirt this limitation
+
+    #[derive(Debug)]
+    enum VariableData {
+        Int(i32),
+        Text(String),
+    } 
+
+    let some_data = vec![
+        VariableData::Int(16),
+        VariableData::Text(String::from("hello, there!")),
+    ];
+
+    for i in &some_data {
+        println!("{:#?}",i);
+    }
 }
