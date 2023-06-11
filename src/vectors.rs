@@ -89,4 +89,17 @@ pub fn vectors() {
     for i in &some_data {
         println!("{:#?}",i);
     }
+
+    // vectors are deallocated just like any other struct when it goes out of scope, along with its
+    // contents
+    // any references to a deallocated vec will be unusable after it is deallocated
+
+    let an_item: &i32;
+    {
+        let my_vec = vec![0,1,2];
+        an_item = &my_vec[0];
+    }
+    // this print statement results in an error because the value is cleaned up once the vector it
+    // is borrowed from leaves scope
+    // println!("{an_item}");
 }
