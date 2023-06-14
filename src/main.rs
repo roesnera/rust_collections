@@ -19,6 +19,9 @@ fn main() {
     // hash_maps();
     println!("Practice problem section begins below");
     println!("----------------------------------------------------------");
-    let vector = median(&[1,2,3,2,1]);
-    println!("{:?}", vector);
+    // let vector = median(&[1,2,3,2,1]);
+    // println!("{:?}", vector);
+
+    let pig_latin = convert_strings(String::from("Hello world"));
+    println!("{pig_latin}");
 }
